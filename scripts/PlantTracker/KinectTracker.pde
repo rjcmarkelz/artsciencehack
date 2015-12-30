@@ -61,6 +61,7 @@ class KinectTracker {
         int rawDepth = depth[offset];
 
         // Testing against threshold
+        // if (rawDepth >= minDepth && rawDepth <= maxDepth){
         if (rawDepth < threshold) {
           sumX += x;
           sumY += y;
@@ -68,6 +69,7 @@ class KinectTracker {
         }
       }
     }
+
     // As long as we found something
     if (count != 0) {
       loc = new PVector(sumX/count, sumY/count);
@@ -102,7 +104,8 @@ class KinectTracker {
         // Raw depth
         int rawDepth = depth[offset];
         int pix = x + y * display.width;
-        if (rawDepth < threshold) {
+        if (rawDepth >= minDepth && rawDepth <= maxDepth){
+        // if (rawDepth < threshold) {
           // A red color instead
           display.pixels[pix] = color(150, 50, 50);
         } else {

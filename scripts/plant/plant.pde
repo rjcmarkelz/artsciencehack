@@ -22,11 +22,6 @@ void draw(){
 
 }
 
-////mouseX is one input
-////mouseY is another input
-////click is another input
-
-
 // class leaf
 class Leaf {
     float x, y, radius;

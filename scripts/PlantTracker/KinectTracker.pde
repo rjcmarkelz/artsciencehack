@@ -12,6 +12,12 @@ class KinectTracker {
   // Depth threshold
   int threshold = 500;
 
+  // Which pixels do we care about?
+  ////////////
+  int minDepth =  60;
+  int maxDepth = 500;
+  ////////////
+
   // Raw location
   PVector loc;
 

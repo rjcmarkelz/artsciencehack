@@ -1,8 +1,8 @@
 // intialize objects
-Leaf l1;
-Stem s1;
-Root r1;
-// RootInit r1;
+// Leaf l1;
+// Stem s1;
+// Root r1;
+Plant p1;
 
 // make screen
 void setup(){
@@ -10,18 +10,21 @@ void setup(){
     fill(255, 204);
     noStroke();
 
-    l1 = new Leaf();
-    s1 = new Stem();
-    r1 = new Root();
+    p1 = new Plant();
+
+    // l1 = new Leaf();
+    // s1 = new Stem();
+    // r1 = new Root();
 }
 
 // draw screen
 void draw(){
     background(0); // black
 
-    l1.display();
-    s1.display();
-    r1.display();
+    p1.transmit();
+    // l1.display();
+    // s1.display();
+    // r1.display();
 }
 
 ////mouseX is one input
@@ -40,7 +43,7 @@ class Leaf {
     }
 
     void display(){
-        fill(102);
+        fill(0, 255, 0);
         ellipse(x, y, radius*5, radius*2);
     }
 }
@@ -57,12 +60,12 @@ class Stem {
     }
 
     void display(){
-        fill(150);
+        fill(255, 196, 12);
         rect(xpos, ypos, w, h);
     }
 }
 
-// class stem
+// class root
 class Root {
     float x1, y1, x2, y2, x3, y3;
 
@@ -77,12 +80,28 @@ class Root {
     }
 
     void display(){
-        fill(255);
+        fill(204, 19, 34);
         triangle(x1, y1, x2, y2, x3, y3);
     }
 }
-////shape is elipse
-// class stem
-////shape is rectangle
-// class root
-////shape is triangle
+
+
+class Plant{
+    Leaf l2;
+    Stem s2;
+    Root r2;
+
+    Plant(){
+        l2 = new Leaf();
+        s2 = new Stem();
+        r2 = new Root();
+    }
+
+    void transmit(){
+        l2.display();
+        s2.display();
+        r2.display();
+
+    }
+}
+

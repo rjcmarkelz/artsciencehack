@@ -1,30 +1,25 @@
-// intialize objects
-// Leaf l1;
-// Stem s1;
-// Root r1;
+//artsciencehackathon 2015
+//
+
 Plant p1;
 
 // make screen
 void setup(){
+
     size(500, 500);
     fill(255, 204);
     noStroke();
 
     p1 = new Plant();
 
-    // l1 = new Leaf();
-    // s1 = new Stem();
-    // r1 = new Root();
 }
 
 // draw screen
 void draw(){
-    background(0); // black
 
+    background(0); // black
     p1.transmit();
-    // l1.display();
-    // s1.display();
-    // r1.display();
+
 }
 
 ////mouseX is one input
@@ -44,7 +39,8 @@ class Leaf {
 
     void display(){
         fill(0, 255, 0);
-        ellipse(x, y, radius*5, radius*2);
+        // ellipse(x, y, radius*5, radius*2);
+        ellipse(mouseX, mouseY, radius*5, radius*2);
     }
 }
 
@@ -61,7 +57,8 @@ class Stem {
 
     void display(){
         fill(255, 196, 12);
-        rect(xpos, ypos, w, h);
+        // rect(xpos, ypos, w, h);
+        rect(mouseX, height/2, mouseY/2+10, mouseY/2+10);
     }
 }
 
@@ -72,7 +69,6 @@ class Root {
     Root(){
         x1 = width*.4;
         y1 = height*.75;
-
         x2 = 300;
         y2 = 350;
         x3 = 250;
@@ -81,11 +77,13 @@ class Root {
 
     void display(){
         fill(204, 19, 34);
-        triangle(x1, y1, x2, y2, x3, y3);
+        // triangle(x1, y1, x2, y2, x3, y3);
+        triangle(mouseX, mouseY, x2, y2, x3, y3);
+        
     }
 }
 
-
+// composition class
 class Plant{
     Leaf l2;
     Stem s2;

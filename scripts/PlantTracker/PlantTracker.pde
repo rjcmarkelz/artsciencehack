@@ -16,7 +16,7 @@ PImage depthImg;
 
 // Which pixels do we care about?
 int minDepth =  60;
-int maxDepth = 860;
+int maxDepth = 500;
 
 // What is the kinect's angle
 float angle;
@@ -32,12 +32,6 @@ void setup() {
   // Blank image
   depthImg = new PImage(kinect.width, kinect.height);
 }
-
-
-
-
-
-
 
 void draw() {
   // Draw the raw image
@@ -74,10 +68,10 @@ void draw() {
   ellipse(v1.x, v1.y, 20, 20);
 
   // Let's draw the "lerped" location
-  PVector v2 = tracker.getLerpedPos();
-  fill(100, 250, 50, 200);
-  noStroke();
-  ellipse(v2.x, v2.y, 20, 20);
+  // PVector v2 = tracker.getLerpedPos();
+  // fill(100, 250, 50, 200);
+  // noStroke();
+  // ellipse(v2.x, v2.y, 20, 20);
 
   // Display some info
   // int t = tracker.getThreshold();
@@ -86,30 +80,4 @@ void draw() {
   //   "UP increase threshold, DOWN decrease threshold", 10, 500);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -49,7 +49,8 @@ float xx = 0, yy = 0;
 float angle;
 
 void setup() {
-  size(1280, 480);
+  size (800,800);
+  background (255);
 
   kinect = new Kinect(this);
   kinect.initDepth();
@@ -128,23 +129,23 @@ void draw() {
   // Run the tracking analysis
   tracker.track();
   // Show the image
-  tracker.display();
+  // tracker.display();
 
   // Let's draw the raw location
-  PVector v1 = tracker.getPos();
-  fill(50, 100, 250, 200);
-  noStroke();
-  ellipse(v1.x, v1.y, 20, 20);
+  // PVector v1 = tracker.getPos();
+  // fill(50, 100, 250, 200);
+  // noStroke();
+  // ellipse(v1.x, v1.y, 20, 20);
 
-  // Let's draw the "lerped" location
+  // // Let's draw the "lerped" location
   PVector v2 = tracker.getLerpedPos();
-  fill(100, 250, 50, 200);
-  noStroke();
-  ellipse(v2.x, v2.y, 20, 20);
+  // fill(100, 250, 50, 200);
+  // noStroke();
+  // ellipse(v2.x, v2.y, 20, 20);
 
   // plant.transmit();
-  xx = v2.x;
-  yy = v2.y;
+  xx = int(v2.x);
+  yy = int(v2.y);
 
   background(255);
   //background
@@ -154,16 +155,16 @@ void draw() {
   
   pushMatrix();
   translate(width/2, height/2);
-  int lifespan =  round((height - mouseY)/2)*2;
+  int lifespan =  round((height - yy)/2)*2;
   root(25, lifespan); 
   popMatrix();
   
   pushMatrix();
-  len = mouseY/6 + 10;
-  theta = map(mouseX, 0, width, 0, PI/6);
+  len = yy/6 + 10;
+  theta = map(xx, 0, width, 0, PI/6);
   c = 8;
   translate(width/2, height/2);
-  l = mouseX/40 + 10;
+  l = int(xx/40 + 10);
   branch(len); 
   popMatrix();
 

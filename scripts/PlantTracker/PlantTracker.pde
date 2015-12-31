@@ -10,7 +10,8 @@ import org.openkinect.processing.*;
 // The kinect stuff is happening in another class
 KinectTracker tracker;
 Kinect kinect;
-Plant plant;
+// Plant plant;
+Stem stem;
 
 // Depth image
 PImage depthImg;
@@ -18,6 +19,8 @@ PImage depthImg;
 // Which pixels do we care about?
 int minDepth =  60;
 int maxDepth = 500;
+
+float xx = 0, yy = 0;
 
 // What is the kinect's angle
 float angle;
@@ -29,7 +32,8 @@ void setup() {
   kinect.initDepth();
   angle = kinect.getTilt();
   tracker = new KinectTracker();
-  plant = new Plant();
+  // plant = new Plant();
+  stem = new Stem(100, 100, 20, 20);
 
   // Blank image
   depthImg = new PImage(kinect.width, kinect.height);
@@ -75,7 +79,14 @@ void draw() {
   noStroke();
   ellipse(v2.x, v2.y, 20, 20);
 
-  plant.transmit();
+  // plant.transmit();
+  xx = v2.x;
+  yy = v2.y;
+
+  // println(xx);
+  // println(yy);
+  stem.display(xx, yy);
+
 
   // Display some info
   // int t = tracker.getThreshold();
@@ -85,3 +96,23 @@ void draw() {
 
 }
 
+// class stem
+class Stem {
+    float x, y, h, w, xd, yd;
+
+    Stem(float xpos, float ypos, float hit, float wid){
+        x = xpos;
+        y = ypos;
+        h = hit;
+        w = wid; 
+    }
+
+    void display(float xdis, float ydis){
+        xd = xdis;
+        yd = ydis;
+
+        fill(255, 196, 12);
+        rect(x, y, xd, yd);
+        // rect(mouseX, height/2, mouseY/2+10, mouseY/2+10);
+    }
+}

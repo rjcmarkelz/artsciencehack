@@ -61,8 +61,8 @@ class KinectTracker {
         int rawDepth = depth[offset];
 
         // Testing against threshold
-        // if (rawDepth >= minDepth && rawDepth <= maxDepth){
-        if (rawDepth < threshold) {
+        if (rawDepth >= minDepth && rawDepth <= maxDepth){
+        // if (rawDepth < threshold) {
           sumX += x;
           sumY += y;
           count++;

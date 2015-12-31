@@ -10,6 +10,7 @@ import org.openkinect.processing.*;
 // The kinect stuff is happening in another class
 KinectTracker tracker;
 Kinect kinect;
+Plant plant;
 
 // Depth image
 PImage depthImg;
@@ -28,6 +29,7 @@ void setup() {
   kinect.initDepth();
   angle = kinect.getTilt();
   tracker = new KinectTracker();
+  plant = new Plant();
 
   // Blank image
   depthImg = new PImage(kinect.width, kinect.height);
@@ -72,6 +74,8 @@ void draw() {
   fill(100, 250, 50, 200);
   noStroke();
   ellipse(v2.x, v2.y, 20, 20);
+
+  plant.transmit();
 
   // Display some info
   // int t = tracker.getThreshold();

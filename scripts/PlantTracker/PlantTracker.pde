@@ -11,7 +11,9 @@ import org.openkinect.processing.*;
 KinectTracker tracker;
 Kinect kinect;
 // Plant plant;
+// Leaf leaf;
 Stem stem;
+// Root root;
 
 // Depth image
 PImage depthImg;
@@ -33,7 +35,10 @@ void setup() {
   angle = kinect.getTilt();
   tracker = new KinectTracker();
   // plant = new Plant();
+
+  // leaf = new Leaf();
   stem = new Stem(100, 100, 20, 20);
+  // root = new Root();
 
   // Blank image
   depthImg = new PImage(kinect.width, kinect.height);
@@ -96,23 +101,3 @@ void draw() {
 
 }
 
-// class stem
-class Stem {
-    float x, y, h, w, xd, yd;
-
-    Stem(float xpos, float ypos, float hit, float wid){
-        x = xpos;
-        y = ypos;
-        h = hit;
-        w = wid; 
-    }
-
-    void display(float xdis, float ydis){
-        xd = xdis;
-        yd = ydis;
-
-        fill(255, 196, 12);
-        rect(x, y, xd, yd);
-        // rect(mouseX, height/2, mouseY/2+10, mouseY/2+10);
-    }
-}

@@ -1,17 +1,20 @@
 // class stem
-// class Stem {
-//     float xpos, ypos, h, w;
+class Stem {
+    float x, y, h, w, xd, yd;
 
-//     Stem(){
-//         xpos = width*.4;
-//         ypos = height*.15;
-//         h = 300;
-//         w = 100; 
-//     }
+    Stem(float xpos, float ypos, float hit, float wid){
+        x = xpos;
+        y = ypos;
+        h = hit;
+        w = wid; 
+    }
 
-//     void display(){
-//         fill(255, 196, 12);
-//         rect(xpos, ypos, w, h);
-//         // rect(mouseX, height/2, mouseY/2+10, mouseY/2+10);
-//     }
-// }
+    void display(float xdis, float ydis){
+        xd = xdis;
+        yd = ydis;
+
+        fill(255, 196, 12);
+        rect(x, y, xd, yd);
+        // rect(mouseX, height/2, mouseY/2+10, mouseY/2+10);
+    }
+}

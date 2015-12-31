@@ -1,4 +1,4 @@
-// based on code by Daniel Shiffman and Elie Zananiri
+// partially based on code by Daniel Shiffman and Elie Zananiri
 // https://github.com/shiffman/OpenKinect-for-Processing
 // http://shiffman.net/p5/kinect/
 // http://www.silentlycrashing.net
@@ -49,7 +49,7 @@ float xx = 0, yy = 0;
 float angle;
 
 void setup() {
-  size (800,800);
+  size (600, 600);
   background (255);
 
   kinect = new Kinect(this);
@@ -104,14 +104,19 @@ for (int i = 0; i < ranWalkno; i ++){
 }
 
 void draw() {
+  background(255);
+  noStroke();
+  fill(0);
+  // rect(100, height/2, width, height/2);
+
   // Draw the raw image
-  image(kinect.getDepthImage(), 0, 0);
+  // image(kinect.getDepthImage(), 500, 500);
 
   // Threshold the depth image
   int[] rawDepth = kinect.getRawDepth();
   for (int i=0; i < rawDepth.length; i++) {
     if (rawDepth[i] >= minDepth && rawDepth[i] <= maxDepth) {
-      depthImg.pixels[i] = color(255);
+      depthImg.pixels[i] = color(255, 0, 0);
     } else {
       depthImg.pixels[i] = color(0);
     }
@@ -119,11 +124,11 @@ void draw() {
 
   // Draw the thresholded image
   depthImg.updatePixels();
-  image(depthImg, kinect.width, 0);
+  image(depthImg, 0, 0, 600, 600);
 
-  fill(0);
-  text("TILT: " + angle, 10, 20);
-  text("THRESHOLD: [" + minDepth + ", " + maxDepth + "]", 10, 36);
+  // fill(0);
+  // text("TILT: " + angle, 10, 20);
+  // text("THRESHOLD: [" + minDepth + ", " + maxDepth + "]", 10, 36);
 
 
   // Run the tracking analysis
@@ -139,24 +144,28 @@ void draw() {
 
   // // Let's draw the "lerped" location
   PVector v2 = tracker.getLerpedPos();
-  // fill(100, 250, 50, 200);
-  // noStroke();
-  // ellipse(v2.x, v2.y, 20, 20);
+  fill(0, 0, 255, 200);
+  noStroke();
+  ellipse(v2.x, v2.y, 20, 20);
 
   // plant.transmit();
   xx = int(v2.x);
   yy = int(v2.y);
-
-  background(255);
-  //background
-  noStroke();
-  fill(0);
-  rect(0, height/2, width, height/2);
   
   pushMatrix();
   translate(width/2, height/2);
   int lifespan =  round((height - yy)/2)*2;
   root(25, lifespan); 
+  popMatrix();
+
+  pushMatrix();
+  translate(width/2, height/2);
+  root(22, lifespan); 
+  popMatrix();
+
+  pushMatrix();
+  translate(width/2, height/2);
+  root(27, lifespan); 
   popMatrix();
   
   pushMatrix();
@@ -184,7 +193,7 @@ void draw() {
 void branch(float len){
   
   strokeWeight(len/6);
-  stroke(c*20-100);
+  stroke(map(len, 10, 100, 255, 20));
   line (0,0,0,-len + lenN[c]);
   translate(0,-len + lenN[c]);
   len *= 0.8; 
@@ -206,7 +215,7 @@ void branch(float len){
     popMatrix();
     
   } else {
-      fill(120);
+      fill(0, 255, 0, 200);
       noStroke();
       ellipse(0,0,l/2,l);
   }
@@ -221,7 +230,7 @@ void root(int b, int lifespan){
     
     for (int i = 0; i < lifespan; i += 2){
     
-      stroke(255);
+      stroke(100);
       strokeWeight(lifespan/90);
       point(path[b][i],path[b][i+1]);
     
@@ -237,6 +246,7 @@ void root(int b, int lifespan){
       pushMatrix();
       root(b-1, lifespan);
       popMatrix();
+
       pushMatrix();
       root(b+2, lifespan);
       popMatrix();

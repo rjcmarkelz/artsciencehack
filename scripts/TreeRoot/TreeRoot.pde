@@ -58,7 +58,7 @@ void draw(){
   //background
   noStroke();
   fill(0);
-  rect(0,height/2,width,height/2);
+  rect(0, height/2, width, height/2);
   
   pushMatrix();
   translate(width/2, height/2);
@@ -68,7 +68,7 @@ void draw(){
   
   pushMatrix();
   len = mouseY/6 + 10;
-  theta = map(mouseX,0,width,0,PI/6);
+  theta = map(mouseX, 0, width, 0, PI/6);
   c = 8;
   translate(width/2, height/2);
   l = mouseX/40 + 10;
@@ -88,26 +88,27 @@ void branch(float len){
   
   c += 2;
   
-      if (len > 10){
+  if (len > 10){
       
-      pushMatrix();
-      rotate(theta + -thetaN[c]);
-      branch(len);
-      popMatrix();
+    pushMatrix();
+    rotate(theta + -thetaN[c]);
+    branch(len);
+    popMatrix();
       
-      c -= 2;
+    c -= 2;
       
-      pushMatrix();
-      rotate(-theta + thetaN[c+1]);
-      branch(len);
-      popMatrix();
-      }else{
+    pushMatrix();
+    rotate(-theta + thetaN[c+1]);
+    branch(len);
+    popMatrix();
+    
+  } else {
       fill(120);
       noStroke();
       ellipse(0,0,l/2,l);
-      }
+  }
       
-      c -= 1;
+  c -= 1;
 
 }
 
@@ -119,7 +120,6 @@ void root(int b, int lifespan){
     
       stroke(255);
       strokeWeight(lifespan/90);
-      
       point(path[b][i],path[b][i+1]);
     
     }
@@ -128,19 +128,12 @@ void root(int b, int lifespan){
     
     translate (path[b][lifespan],path[b][lifespan-1]);
     lifespan = round(lifespan/4+20)*2;
-    
-    
     b += 3;
-    
-    
     if (lifespan > 150) {
       
       pushMatrix();
       root(b-1, lifespan);
       popMatrix();
-      
-      
-      
       pushMatrix();
       root(b+2, lifespan);
       popMatrix();

@@ -31,11 +31,6 @@ int l;
 ///////// TreeRoot Code ///////////
 ///////////////////////////////////
 
-// Plant plant;
-// Leaf leaf;
-// Stem stem;
-// Root root;
-
 // Depth image
 PImage depthImg;
 
@@ -48,6 +43,7 @@ float xx = 0, yy = 0;
 // What is the kinect's angle
 float angle;
 
+// setup kinect
 void setup() {
   size (600, 600);
   background (255);
@@ -68,8 +64,6 @@ void setup() {
 ///////////////////////////////////
 ///////// TreeRoot Code ///////////
 ///////////////////////////////////
-// size (800,800);
-// background (255);
 
 for (int i = 0; i < thetaN.length; i +=1 ){
   thetaN[i] = random(-PI/6, PI/6);

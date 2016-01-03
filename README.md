@@ -20,4 +20,7 @@ L-Tree
 2D-raytracer
 rendering shapes?
 
-## 
+## Outcomes
+For the most part this hackathon was a success to learn the basics of processing and then make some plant human interaction art with it.
+
+Write-up coming soon when we have some more time to sift through the plots, demos and sketches.
